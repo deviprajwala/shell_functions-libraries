@@ -16,5 +16,5 @@ double
 triple
 #function call to a function in the script functions
 
-result=$(multiple $mul)
+#result=$(multiple $mul)
 #function call to a function in the script functions
