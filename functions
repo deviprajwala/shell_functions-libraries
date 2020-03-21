@@ -1,0 +1,90 @@
+#!/bin/bash
+
+#script which defines the creation of functions returning of variables and array handling
+#functions are blocks of script code which we assign a name and use in the program wherever necessary
+
+
+echo 'Enter a number'
+read n
+#user input for a number which is processed later
+
+#--------------------------------------------------------------------------------------------#
+
+#function can be defined in two formats
+#format 1
+function double
+{
+ var=$[ $n*2 ]
+ echo "Two times the number is $var"
+} 
+#function to echo the vale which is a multiple of two
+
+
+#format2
+triple()
+{
+ var=$[ $n*3 ]
+ echo "Three times the number is $var" 
+}
+#function to echo the vale which is a multiple of three
+
+
+double
+#function call to the function of format1
+
+triple
+#function call to the function of format2
+
+#-----------------------------------------------------------------------------------------------#
+
+#sending parameters to the function and returning variables
+multiple()
+{
+  local num=$1
+  var=$[ $n*$num ]
+ #echo "$1 times the number is $var(within the function)" 
+ echo $var
+}
+#function to echo the vale which is a multiple of a number sen as parameter
+
+
+echo Enter the required multiple
+read mul
+result=$(multiple $mul)
+echo "The result is $result"
+#(after returning the value)"
+
+#------------------------------------------------------------------------------------------------#
+
+#array handling in functions
+#If you try using array variable as a function parameter,the function onl picks up the first value of the array variable,in order to solve this we must disassedmble the array variable into indivisual values and use the values as function parameters
+
+
+function array_twice
+#it is a function which receives an array as argument multiolies the array elements by two and return the modified array 
+{
+ local new_array
+ count=0
+ new_array=($(echo "$@"))
+ 
+ for i in ${new_array[@]}
+ do 
+  new_array[$count]=$[ new_array[$count]*2 ]
+  count=$[ $count+1 ]
+ done
+ echo ${new_array[*]}
+}
+
+
+declare -a array
+array=(1 2 3 4 5)
+#array is declared
+
+echo before doubling ${array[*]}
+
+result=($(array_twice ${array[*]}))
+#function is called and the returned array is stored in the variable result
+echo after doubling ${result[*]}
+
+
+
