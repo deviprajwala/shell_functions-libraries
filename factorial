@@ -1,0 +1,32 @@
+#!/bin/bash
+#recursive function to calculate the factorial of a number
+
+
+function fact
+#a recursive function named fact which calculates the factorial of a given number. 
+{
+  if (( $1<=1 ))
+  #end condition for the recursive function
+  then 
+      echo 1
+      return
+  else
+      val=`expr $1 - 1`
+      #value is decremented by one
+
+      result=$(fact $val)
+      #function is called
+
+      ans=`expr $1 \* $result`
+      echo $ans
+  fi  
+}
+
+echo Enter a number whoose factorial is to be calculated
+read num
+#to get the user input to calculate the factorial
+
+result=$(fact $num)
+#function call
+echo the factorial of $num is $result
+#final result
