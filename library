@@ -1,0 +1,20 @@
+#!/bin/bash
+#script which shows the use of library
+
+. ./factorial
+#importing  the functions which are defined in the script named factorial
+
+. ./functions
+#importing  the functions which are defined in the script named funtions
+
+result=$(fact $num)
+#function call to a function in the script factorial
+
+double
+#function call to a function in the script functions
+
+triple
+#function call to a function in the script functions
+
+result=$(multiple $mul)
+#function call to a function in the script functions
