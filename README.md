@@ -6,3 +6,6 @@ array from the function.
 The script named factorial consists of a recursive function which calculates the factorial of a given number.
 The script named library gives information about the code sharing through library.In the script the function present in the script function
 and factorial is imported.
+
+
+reference:Linux command line and shell argumnets
